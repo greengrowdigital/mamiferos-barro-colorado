@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#141c16" />
+  <!-- La silueta que apenas se distingue en el dosel: eso fue todo lo que vimos. -->
+  <path
+    d="M6 12c5 3 9 3 13 1M58 12c-5 3-9 3-13 1"
+    stroke="#3f5a46"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    fill="none"
+  />
+  <path
+    d="M4 26c8-2 14 1 20 5M60 26c-8-2-14 1-20 5"
+    stroke="#3f5a46"
+    stroke-width="2.4"
+    stroke-linecap="round"
+    fill="none"
+  />
+  <ellipse cx="32" cy="30" rx="9.5" ry="11" fill="#0b0f0c" />
+  <path d="M32 40c-3 6-2 12 1 16" stroke="#0b0f0c" stroke-width="4.6" stroke-linecap="round" fill="none" />
+  <circle cx="28.2" cy="27.5" r="1.9" fill="#e8a33d" />
+  <circle cx="35.8" cy="27.5" r="1.9" fill="#e8a33d" />
+</svg>
