@@ -1,0 +1,11 @@
+# El material original de la gira vive junto al proyecto pero no se despliega:
+# el zip de Drive pesa 613 MB y hace fallar la subida. Lo que el sitio usa ya
+# está recortado y comprimido en public/img y public/media.
+*.zip
+*.docx
+*.pages
+
+node_modules
+dist
+.git
+.impeccable

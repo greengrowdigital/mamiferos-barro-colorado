@@ -16,3 +16,5 @@ yarn-error.log*
 
 # Cache de la herramienta de revisión de diseño
 .impeccable/
+
+.vercel
