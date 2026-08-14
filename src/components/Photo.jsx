@@ -19,16 +19,29 @@ export function photoSize(src) {
   return [1200, 1600]
 }
 
+/* De cada foto existen dos ficheros: el grande (lado mayor 1600) y uno de 720.
+   Declararlos como srcset deja que el navegador baje el pequeño en un teléfono
+   —menos bytes y, sobre todo, mucha menos decodificación— sin que nadie pierda
+   nitidez en una pantalla grande. Los pósters de video ya son pequeños. */
+function buildSrcSet(src) {
+  if (src.includes('-sm.webp') || src.includes('poster-')) return undefined
+  const small = src.replace(/\.webp$/, '-sm.webp')
+  const [w] = photoSize(src)
+  const smallW = Math.round((720 / Math.max(w, photoSize(src)[1])) * w)
+  return `${small} ${smallW}w, ${src} ${w}w`
+}
+
 export default function Photo({ src, alt, className = '', priority = false, sizes, objectPosition }) {
   const [w, h] = photoSize(src)
 
   return (
     <img
       src={src}
+      srcSet={buildSrcSet(src)}
       alt={alt}
       width={w}
       height={h}
-      sizes={sizes}
+      sizes={sizes ?? '100vw'}
       loading={priority ? 'eager' : 'lazy'}
       fetchPriority={priority ? 'high' : 'auto'}
       decoding="async"

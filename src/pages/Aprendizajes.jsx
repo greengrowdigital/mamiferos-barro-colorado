@@ -105,7 +105,7 @@ export default function Aprendizajes() {
         <Band from="mist" to="under" height="16vh" />
 
         {/* Aspectos culturales */}
-        <section data-nav-theme="dark" className="surface-under" aria-labelledby="cultural">
+        <section data-nav-theme="dark" className="defer-offscreen surface-under" aria-labelledby="cultural">
           <div className="shell py-[clamp(3rem,9vh,6rem)]">
             <SectionHead id="cultural" tone="dark">
               {t(cultural.heading)}
@@ -123,7 +123,7 @@ export default function Aprendizajes() {
         <Band from="under" to="mist" height="16vh" />
 
         {/* Aspectos organizativos */}
-        <section data-nav-theme="light" className="surface-mist-deep" aria-labelledby="organizativo">
+        <section data-nav-theme="light" className="defer-offscreen surface-mist-deep" aria-labelledby="organizativo">
           <div className="shell py-[clamp(3rem,9vh,6rem)]">
             <SectionHead id="organizativo">{t(organizativo.heading)}</SectionHead>
 
@@ -154,7 +154,7 @@ export default function Aprendizajes() {
         </section>
 
         {/* Evaluación */}
-        <section data-nav-theme="light" className="surface-mist" aria-labelledby="evaluacion">
+        <section data-nav-theme="light" className="defer-offscreen surface-mist" aria-labelledby="evaluacion">
           <div className="shell py-[clamp(3rem,9vh,6rem)]">
             <SectionHead id="evaluacion">{t(evaluacion.heading)}</SectionHead>
 
@@ -200,7 +200,7 @@ export default function Aprendizajes() {
         <Band from="mist" to="dawn" height="18vh" />
 
         {/* Conclusiones */}
-        <section data-nav-theme="dark" className="surface-dawn grain relative overflow-hidden" aria-labelledby="conclusiones">
+        <section data-nav-theme="dark" className="defer-offscreen surface-dawn grain relative overflow-hidden" aria-labelledby="conclusiones">
           <div className="shell py-[clamp(4rem,12vh,8rem)]">
             <SectionHead id="conclusiones" tone="dark">
               {t(conclusiones.heading)}

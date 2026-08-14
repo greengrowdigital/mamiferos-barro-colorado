@@ -1,4 +1,4 @@
-import { Children, cloneElement, isValidElement, useLayoutEffect, useRef, useState } from 'react'
+import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react'
 
 const EASE = 'cubic-bezier(0.16, 1, 0.3, 1)'
 
@@ -7,29 +7,39 @@ function prefersReduced() {
 }
 
 /**
- * El contenido arranca visible y sólo se oculta si, al montar, está claramente
- * bajo el pliegue y el navegador puede observarlo. Así una captura, una
- * impresión o un render sin IntersectionObserver nunca dejan secciones en blanco.
+ * El contenido arranca visible y sólo se oculta si está bajo el pliegue cuando
+ * el observador lo mira por primera vez. Así una captura, una impresión o un
+ * render sin IntersectionObserver nunca dejan secciones en blanco.
+ *
+ * La decisión se toma con el rectángulo que ya trae la propia entrada del
+ * observador. Medir con `getBoundingClientRect` desde un efecto obligaba al
+ * navegador a calcular el layout de la página entera de forma síncrona, una vez
+ * por bloque: en un equipo lento eso costaba más de un segundo antes del primer
+ * pintado. El observador entrega lo mismo sin bloquear nada.
  */
 function useRevealState() {
   const ref = useRef(null)
   const [state, setState] = useState('idle')
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const el = ref.current
     if (!el || typeof IntersectionObserver === 'undefined' || prefersReduced()) return undefined
 
-    if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
-      setState('shown')
-      return undefined
-    }
-
-    setState('hidden')
+    let settled = false
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setState('shown')
           observer.disconnect()
+          settled = true
+          return
+        }
+        // Primera lectura: si el bloque aún viene por debajo del pliegue, se
+        // esconde para poder entrar; si ya quedó arriba, se deja como está.
+        if (!settled) {
+          settled = true
+          const root = entry.rootBounds
+          if (root && entry.boundingClientRect.top >= root.bottom) setState('hidden')
         }
       },
       { rootMargin: '0px 0px -6% 0px', threshold: 0.12 },

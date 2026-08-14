@@ -81,7 +81,7 @@ export default function Mamiferos() {
   usePageTitle(lang === 'es' ? 'Los mamíferos — Barro Colorado' : 'The mammals — Barro Colorado')
 
   /* El avistamiento se abre al subir por él: el marco crece y el resto cede. */
-  const { scrollYProgress } = useScroll({ target: stageRef, offset: ['start end', 'center center'] })
+  const { scrollYProgress } = useScroll({ target: stageRef, offset: ['start end', 'center center'], layoutEffect: false })
   const frameScale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [0.86, 1])
   const frameOpacity = useTransform(scrollYProgress, [0, 0.45], [0.4, 1])
 
@@ -170,7 +170,7 @@ export default function Mamiferos() {
         </section>
 
         {/* Inventario: lo que la isla tiene y lo que vimos */}
-        <section data-nav-theme="dark" className="surface-under" aria-labelledby="inventario">
+        <section data-nav-theme="dark" className="defer-offscreen surface-under" aria-labelledby="inventario">
           <div className="shell pb-[clamp(3rem,9vh,6rem)]">
             <DrawLine tone="dark" />
             <div className="grid gap-10 pt-[clamp(2.5rem,7vh,4.5rem)] lg:grid-cols-[1fr_1.25fr] lg:gap-16">
@@ -228,7 +228,7 @@ export default function Mamiferos() {
         </section>
 
         {/* El avistamiento */}
-        <section ref={stageRef} data-nav-theme="dark" className="surface-under grain relative overflow-hidden" aria-labelledby="avistamiento">
+        <section ref={stageRef} data-nav-theme="dark" className="defer-offscreen surface-under grain relative overflow-hidden" aria-labelledby="avistamiento">
           <div className="shell py-[clamp(3.5rem,10vh,7rem)]">
             <Reveal>
               <p className="field-label m-0 text-amber-400">{t(sighting.kicker)}</p>
@@ -291,7 +291,7 @@ export default function Mamiferos() {
         <Band from="under" to="mist" height="16vh" />
 
         {/* Lo demás que sí apareció */}
-        <section data-nav-theme="light" className="surface-mist" aria-labelledby="otros">
+        <section data-nav-theme="light" className="defer-offscreen surface-mist" aria-labelledby="otros">
           <div className="shell py-[clamp(3rem,9vh,6rem)]">
             <Reveal>
               <h2
@@ -343,7 +343,7 @@ export default function Mamiferos() {
         <Band from="mist" to="dawn" height="18vh" />
 
         {/* Por qué vimos tan poco */}
-        <section data-nav-theme="dark" className="surface-dawn grain relative overflow-hidden" aria-labelledby="por-que">
+        <section data-nav-theme="dark" className="defer-offscreen surface-dawn grain relative overflow-hidden" aria-labelledby="por-que">
           <div className="shell py-[clamp(3.5rem,10vh,7rem)]">
             <Reveal>
               <h2

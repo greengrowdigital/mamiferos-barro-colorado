@@ -99,7 +99,7 @@ export default function Home() {
         </section>
 
         {/* Objetivos */}
-        <section data-nav-theme="light" className="surface-mist-deep" aria-labelledby="objetivos">
+        <section data-nav-theme="light" className="defer-offscreen surface-mist-deep" aria-labelledby="objetivos">
           <div className="shell py-[clamp(3rem,9vh,6.5rem)]">
             <Reveal>
               <p className="field-label m-0 text-amber-700">{t(objectives.kicker)}</p>
@@ -140,7 +140,7 @@ export default function Home() {
         <Band from="mist" to="under" height="18vh" />
 
         {/* La frase que resume el trabajo, sobre el sotobosque */}
-        <section data-nav-theme="dark" className="surface-under grain relative overflow-hidden" aria-label={lang === 'es' ? 'Cita del informe' : 'Quote from the report'}>
+        <section data-nav-theme="dark" className="defer-offscreen surface-under grain relative overflow-hidden" aria-label={lang === 'es' ? 'Cita del informe' : 'Quote from the report'}>
           <div className="shell relative py-[clamp(4.5rem,14vh,9rem)]">
             <ScrollZoom className="pointer-events-none absolute inset-0 -z-10 opacity-[0.16]" from={1.2}>
               <img
@@ -176,7 +176,7 @@ export default function Home() {
         <Band from="under" to="mist" height="16vh" />
 
         {/* Quiénes firman el informe */}
-        <section data-nav-theme="light" className="surface-mist" aria-labelledby="quienes">
+        <section data-nav-theme="light" className="defer-offscreen surface-mist" aria-labelledby="quienes">
           <div className="shell py-[clamp(3rem,8vh,5.5rem)]">
             <Reveal>
               <h2

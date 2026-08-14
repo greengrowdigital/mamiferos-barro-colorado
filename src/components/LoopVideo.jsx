@@ -16,6 +16,10 @@ const AUTO_POSTER = {
   '/media/loop-charla.mp4': '/img/poster-loop-charla.webp',
 }
 
+export function loopPoster(src) {
+  return AUTO_POSTER[src]
+}
+
 export default function LoopVideo({ src, poster, className = '', videoClassName = '', label }) {
   const still = poster ?? AUTO_POSTER[src]
   const reduce = useReducedMotion()
@@ -30,8 +34,11 @@ export default function LoopVideo({ src, poster, className = '', videoClassName 
       setVisible(true)
       return undefined
     }
+    // Margen corto a propósito: en la cinta del hero hay clips a los lados que
+    // nunca llegan a verse, y con un margen generoso el navegador acababa
+    // decodificando varios de más.
     const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), {
-      rootMargin: '200px',
+      rootMargin: '64px',
       threshold: 0.01,
     })
     observer.observe(el)

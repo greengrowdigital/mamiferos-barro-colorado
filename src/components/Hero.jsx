@@ -49,7 +49,7 @@ function WordmarkKnockout({ fill }) {
             dominantBaseline="middle"
             textLength="88%"
             lengthAdjust="spacingAndGlyphs"
-            style={{ ...shared.style, fontSize: 'clamp(2.6rem, min(21vw, 27vh), 15rem)' }}
+            style={{ ...shared.style, fontSize: 'clamp(2.6rem, min(21vw, 27svh), 15rem)' }}
           >
             BARRO
           </text>
@@ -60,7 +60,7 @@ function WordmarkKnockout({ fill }) {
             dominantBaseline="middle"
             textLength="88%"
             lengthAdjust="spacingAndGlyphs"
-            style={{ ...shared.style, fontSize: 'clamp(1.7rem, min(13.2vw, 17vh), 9.4rem)' }}
+            style={{ ...shared.style, fontSize: 'clamp(1.7rem, min(13.2vw, 17svh), 9.4rem)' }}
           >
             COLORADO
           </text>

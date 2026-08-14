@@ -95,7 +95,7 @@ export default function Jornada() {
   const trackRef = useRef(null)
   usePageTitle(lang === 'es' ? 'La jornada — Barro Colorado' : 'The day — Barro Colorado')
 
-  const { scrollYProgress } = useScroll({ target: trackRef, offset: ['start 72%', 'end 60%'] })
+  const { scrollYProgress } = useScroll({ target: trackRef, offset: ['start 72%', 'end 60%'], layoutEffect: false })
   const drawn = useSpring(scrollYProgress, { stiffness: 90, damping: 28, restDelta: 0.001 })
 
   return (
@@ -130,7 +130,7 @@ export default function Jornada() {
         <Band from="under" to="mist" height="16vh" />
 
         {/* Los cuatro lugares */}
-        <section data-nav-theme="light" className="surface-mist" aria-labelledby="lugares">
+        <section data-nav-theme="light" className="defer-offscreen surface-mist" aria-labelledby="lugares">
           <div className="shell py-[clamp(3rem,9vh,6rem)]">
             <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
               <div>
@@ -183,7 +183,7 @@ export default function Jornada() {
         </section>
 
         {/* Quiénes fuimos */}
-        <section data-nav-theme="light" className="surface-mist-deep" aria-labelledby="quienes-fuimos">
+        <section data-nav-theme="light" className="defer-offscreen surface-mist-deep" aria-labelledby="quienes-fuimos">
           <div className="shell py-[clamp(3rem,9vh,6rem)]">
             <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
               <div>

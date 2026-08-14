@@ -22,10 +22,14 @@ export function scrollToTop() {
  */
 export default function useSmoothScroll() {
   useEffect(() => {
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (media.matches) return undefined
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
 
-    const lenis = new Lenis({ duration: 1.05, smoothWheel: true, touchMultiplier: 1.6 })
+    // Sólo con ratón. En pantallas táctiles el desplazamiento del sistema ya es
+    // suave y corre fuera del hilo principal; interponer un bucle por
+    // fotograma sólo le quita tiempo de CPU a un aparato que suele tener menos.
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return undefined
+
+    const lenis = new Lenis({ duration: 1.05, smoothWheel: true, smoothTouch: false })
     active = lenis
 
     let frame = requestAnimationFrame(function raf(time) {

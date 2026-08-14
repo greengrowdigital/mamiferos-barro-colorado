@@ -121,7 +121,7 @@ export default function Anexos() {
         <Band from="mist" to="under" height="16vh" />
 
         {/* El video */}
-        <section data-nav-theme="dark" className="surface-under" aria-labelledby="video">
+        <section data-nav-theme="dark" className="defer-offscreen surface-under" aria-labelledby="video">
           <div className="shell py-[clamp(3rem,9vh,6rem)]">
             <Reveal>
               <h2
@@ -171,7 +171,7 @@ export default function Anexos() {
         <Band from="under" to="mist" height="16vh" />
 
         {/* Galería suelta */}
-        <section data-nav-theme="light" className="surface-mist-deep" aria-labelledby="galeria">
+        <section data-nav-theme="light" className="defer-offscreen surface-mist-deep" aria-labelledby="galeria">
           <div className="shell py-[clamp(3rem,9vh,6rem)]">
             <Reveal>
               <h2

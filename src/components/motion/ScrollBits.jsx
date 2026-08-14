@@ -10,7 +10,7 @@ const EASE = [0.16, 1, 0.3, 1]
 export function Parallax({ children, className, distance = 60, as: Tag = 'div' }) {
   const ref = useRef(null)
   const reduce = useReducedMotion()
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'], layoutEffect: false })
   const y = useTransform(scrollYProgress, [0, 1], [distance, -distance])
   const smooth = useSpring(y, { stiffness: 110, damping: 30, restDelta: 0.5 })
 
@@ -31,7 +31,7 @@ export function Parallax({ children, className, distance = 60, as: Tag = 'div' }
 export function WordsReveal({ text, className, dim = 0.22, style, as: Tag = 'p' }) {
   const ref = useRef(null)
   const reduce = useReducedMotion()
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.45'] })
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.45'], layoutEffect: false })
   const words = String(text).split(' ')
   const Motion = motion[Tag] ?? motion.p
 
@@ -93,7 +93,7 @@ export function DrawLine({ className = '', tone = 'light' }) {
 export function ScrollZoom({ children, className, from = 1.12 }) {
   const ref = useRef(null)
   const reduce = useReducedMotion()
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'center center'] })
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'center center'], layoutEffect: false })
   const scale = useTransform(scrollYProgress, [0, 1], [from, 1])
   const smooth = useSpring(scale, { stiffness: 120, damping: 32, restDelta: 0.001 })
 

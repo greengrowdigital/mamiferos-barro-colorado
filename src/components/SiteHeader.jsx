@@ -139,14 +139,18 @@ export default function SiteHeader() {
                 {({ isActive }) => (
                   <>
                     {t(item.label)}
-                    {isActive && (
-                      <motion.span
-                        layoutId={reduce ? undefined : 'nav-active'}
-                        className="absolute inset-x-3 -bottom-px h-[2px]"
-                        style={{ background: dark ? 'var(--color-amber-400)' : 'var(--color-amber-700)' }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                      />
-                    )}
+                    {/* Subrayado con una transición CSS en lugar de una animación
+                        de layout compartida: la versión con `layoutId` obligaba a
+                        motion a medir la posición de todas las pestañas en cada
+                        render, y eso salía en el perfil como layout forzado. */}
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-x-3 -bottom-px h-[2px] origin-left transition-transform duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                      style={{
+                        background: dark ? 'var(--color-amber-400)' : 'var(--color-amber-700)',
+                        transform: isActive ? 'scaleX(1)' : 'scaleX(0)',
+                      }}
+                    />
                   </>
                 )}
               </NavLink>

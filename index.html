@@ -22,12 +22,11 @@
     <meta property="og:image" content="/img/fig-01-mono-dosel.webp" />
     <meta property="og:locale" content="es_PA" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Martian+Mono:wght@400;600&family=Petrona:ital,wght@0,400..600;1,400&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Las fuentes se sirven desde este mismo dominio (ver src/styles/fonts.css).
+         Archivo dibuja el wordmark del hero, así que se pide desde el HTML en
+         lugar de esperar a que el navegador descubra el @font-face dentro del CSS. -->
+    <link rel="preload" href="/fonts/Archivo-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Petrona-latin.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <div id="root"></div>

@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './fonts.css';
 
 /* ──────────────────────────────────────────────────────────────────────
    Sistema de diseño — "La luz del 18 de julio"
@@ -238,6 +239,16 @@
   }
   .no-scrollbar {
     scrollbar-width: none;
+  }
+
+  /* El navegador se salta el estilo y el layout de las secciones que están
+     fuera de pantalla. `contain-intrinsic-size` le da una altura estimada para
+     que la barra de scroll no dé saltos mientras tanto. La página tiene varias
+     secciones muy altas; en un equipo lento esto quita la mayor parte del
+     trabajo de recálculo inicial. */
+  .defer-offscreen {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
   }
 }
 
